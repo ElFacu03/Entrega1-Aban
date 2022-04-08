@@ -1,0 +1,22 @@
+{% extends "AppLT/padre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+   
+   <h3>Estamos buscando el cliente con DNI: {{dni}}</h3>
+
+   <ul>
+
+        {% for cliente in clientes%}
+
+            <li>{{cliente}}</li>
+
+        {% endfor %}
+        
+        
+
+
+   </ul>
+   
+   
+   
+{% endblock  %}

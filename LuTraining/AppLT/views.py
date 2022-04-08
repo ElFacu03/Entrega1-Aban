@@ -9,9 +9,9 @@ from .models import Cliente, PlanEntrenamiento, Profe
 def inicio(request):
     return render(request,'AppLT/inicio.html')
 
-def cliente(request, nombre, apellido, email):
+def cliente(request, nombre, apellido, dni, email):
     
-    nuevo_cliente=Cliente(nombre=nombre, apellido=apellido, email=email )
+    nuevo_cliente=Cliente(nombre=nombre, apellido=apellido, dni=dni, email=email )
     nuevo_cliente.save()
     return render(request,'AppLT/cliente.html')
 
@@ -34,10 +34,10 @@ def clienteFormulario(request):
             
             informacion = mi_formulario.cleaned_data
 
-            mi_cliente = Cliente(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'])
+            mi_cliente = Cliente(nombre=informacion['nombre'], apellido=informacion['apellido'], dni=informacion['dni'], email=informacion['email'])
             mi_cliente.save()
         
-        return render(request, "AppLT/inicio.html")
+        return render(request, "AppLT/cliente.html")
     else:
         mi_formulario=ClienteFormulario()
 
@@ -72,7 +72,7 @@ def profeFormulario(request):
             
             informacion = profe_formulario.cleaned_data
 
-            mi_profe = Profe(precio=informacion['precio'], fecha_inicio=informacion['fecha_inicio'], tipo=informacion['tipo'])
+            mi_profe = Profe(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'], tel=informacion['tel'])
             mi_profe.save()
         
         return render(request, "AppLT/inicio.html")
@@ -80,3 +80,20 @@ def profeFormulario(request):
         profe_formulario=ProfeFormulario()
 
         return render(request, "AppLT/profeFormulario.html", {"profe_formulario":profe_formulario})
+
+def buscaClienteDni(request):
+    
+    return render(request, "AppLT/busquedaCliente.html")
+
+def buscar(request):
+
+    if request.GET["dni"]:
+        
+        dni=request.GET["dni"]
+        clientes = Cliente.objects.filter(dni=dni)
+
+        return render(request, "AppLT/resultadoBusqueda.html", {"clientes":clientes, "dni":dni})
+
+    else:
+
+        return HttpResponse("No enviaste datos")

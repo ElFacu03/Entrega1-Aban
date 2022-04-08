@@ -5,7 +5,9 @@ class ClienteFormulario(forms.Form):
 
     nombre=forms.CharField()
     apellido=forms.CharField()
+    dni=forms.IntegerField()
     email=forms.EmailField()
+
 
 
 class PlanFormulario(forms.Form):

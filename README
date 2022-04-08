@@ -1,0 +1,10 @@
+- Todos los templates tiene herencia.
+
+- Hay 3 modelos aunque incompletos aún porque no termino de entender como relacionarlos.
+
+- Los templates clienteFormulario, planFormulario y profeFormulario son los unicos formularios que hay para agregar datos a los modelos.
+
+- BusquedaCliente es el unico template con formulario para buscar un cliente en particular en base a su DNI.
+
+- Los botones de inicio dirijen a templates estaticos y con solo texto.
+

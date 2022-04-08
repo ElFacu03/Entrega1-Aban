@@ -1,7 +1,13 @@
 {% extends "AppLT/padre.html" %}
 {% load static %}
 {% block contenidoQueCambia %}
-   
+
+{% if mi_formulario.error %}
+    
+    <p style="color: red">Los datos estan mal, revisarlos</p>
+
+{% endif %}
+
    <form action="/AppLT/clienteFormulario/" method="POST">{% csrf_token %}
         
         <table>

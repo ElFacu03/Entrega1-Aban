@@ -1,0 +1,16 @@
+{% extends "AppLT/padre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+   
+   <form action="/AppLT/buscar/"method="GET">
+
+        <input type="number" name="dni" id="dni">
+
+        <input type="submit" value="buscar">
+
+
+   </form>
+   
+   
+   
+{% endblock  %}
